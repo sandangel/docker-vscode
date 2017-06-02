@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Extensions.Logging.Console</id>
+    <version>1.0.2</version>
+    <authors>Microsoft.Extensions.Logging.Console</authors>
+    <owners>Microsoft.Extensions.Logging.Console</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Console logger provider implementation for Microsoft.Extensions.Logging.</description>
+    <tags>logging</tags>
+    <serviceable>true</serviceable>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.1">
+        <dependency id="System.Runtime.InteropServices.RuntimeInformation" version="[4.0.0, )" />
+        <dependency id="Microsoft.Extensions.Configuration.Abstractions" version="[1.0.2, )" />
+        <dependency id="Microsoft.Extensions.Logging.Abstractions" version="[1.0.2, )" />
+      </group>
+      <group targetFramework=".NETStandard1.3">
+        <dependency id="System.Console" version="[4.0.0, )" />
+        <dependency id="System.Threading" version="[4.0.11, )" />
+        <dependency id="System.Runtime.InteropServices.RuntimeInformation" version="[4.0.0, )" />
+        <dependency id="Microsoft.Extensions.Configuration.Abstractions" version="[1.0.2, )" />
+        <dependency id="Microsoft.Extensions.Logging.Abstractions" version="[1.0.2, )" />
+      </group>
+    </dependencies>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm</licenseUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</iconUrl>
+    <copyright>Copyright © Microsoft Corporation</copyright>
+    <projectUrl>http://www.asp.net/</projectUrl>
+  </metadata>
+</package>

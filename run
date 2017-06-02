@@ -10,6 +10,7 @@ docker run -d \
   -v ${HOME}/.config/Code:/developer/.config/Code \
   -v ${HOME}/.vscode:/developer/.vscode \
   -v ${HOME}/.ssh:/developer/.ssh \
+  -v ${HOME}/.gitconfig:/developer/.gitconfig \
   -v ${PWD}:/developer/project \
   -v ${SSH_AUTH_SOCK}:/ssh_auth_sock \
   -e SSH_AUTH_SOCK=/ssh_auth_sock \

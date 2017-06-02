@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+  <metadata minClientVersion="2.12">
+    <id>SQLite</id>
+    <version>3.13.0</version>
+    <authors>SQLite Development Team</authors>
+    <owners>SQLite Development Team</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Sqlite-square-icon.svg/64px-Sqlite-square-icon.svg.png</iconUrl>
+    <description>SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine. This package contains native libraries for SQLite on Linux, macOS, and Windows (desktop and Universal Windows apps).</description>
+    <releaseNotes>Updated native libraries to SQLite 3.13.0. 
+Consolidated native libraries into one package rather than splitting into multiple packages. This deprecated the need for the 'SQLite.Native' and 'SQLite.UWP.Native' packages.</releaseNotes>
+    <copyright>Public Domain</copyright>
+    <tags>SQLite,embedded,database,sql</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard1.0" />
+    </dependencies>
+  </metadata>
+</package>

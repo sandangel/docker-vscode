@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNetCore.Authentication.Cookies</id>
+    <version>1.0.3</version>
+    <authors>Microsoft.AspNetCore.Authentication.Cookies</authors>
+    <owners>Microsoft.AspNetCore.Authentication.Cookies</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>ASP.NET Core middleware that enables an application to use cookie based authentication.</description>
+    <tags>aspnetcore,authentication,security</tags>
+    <serviceable>true</serviceable>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.1">
+        <dependency id="Microsoft.AspNetCore.Authentication" version="[1.0.3, )" />
+        <dependency id="Microsoft.Extensions.Options" version="[1.0.2, )" />
+        <dependency id="Microsoft.Extensions.WebEncoders" version="[1.0.3, )" />
+      </group>
+      <group targetFramework=".NETStandard1.3">
+        <dependency id="Microsoft.AspNetCore.Authentication" version="[1.0.3, )" />
+        <dependency id="Microsoft.Extensions.Options" version="[1.0.2, )" />
+        <dependency id="Microsoft.Extensions.WebEncoders" version="[1.0.3, )" />
+      </group>
+    </dependencies>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm</licenseUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</iconUrl>
+    <copyright>Copyright © Microsoft Corporation</copyright>
+    <projectUrl>http://www.asp.net/</projectUrl>
+  </metadata>
+</package>

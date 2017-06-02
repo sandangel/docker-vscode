@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Extensions.Configuration.Json</id>
+    <version>1.0.2</version>
+    <authors>Microsoft.Extensions.Configuration.Json</authors>
+    <owners>Microsoft.Extensions.Configuration.Json</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>JSON configuration provider implementation for Microsoft.Extensions.Configuration.</description>
+    <tags>configuration,json</tags>
+    <serviceable>true</serviceable>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.1">
+        <dependency id="Microsoft.Extensions.Configuration" version="[1.0.2, )" />
+        <dependency id="Microsoft.Extensions.Configuration.FileExtensions" version="[1.0.2, )" />
+        <dependency id="Newtonsoft.Json" version="[9.0.1, )" />
+      </group>
+      <group targetFramework=".NETStandard1.3">
+        <dependency id="System.Dynamic.Runtime" version="[4.0.11, )" />
+        <dependency id="System.IO.FileSystem" version="[4.0.1, )" />
+        <dependency id="System.Runtime.Serialization.Primitives" version="[4.1.1, )" />
+        <dependency id="Microsoft.Extensions.Configuration" version="[1.0.2, )" />
+        <dependency id="Microsoft.Extensions.Configuration.FileExtensions" version="[1.0.2, )" />
+        <dependency id="Newtonsoft.Json" version="[9.0.1, )" />
+      </group>
+    </dependencies>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm</licenseUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</iconUrl>
+    <copyright>Copyright © Microsoft Corporation</copyright>
+    <projectUrl>http://www.asp.net/</projectUrl>
+  </metadata>
+</package>

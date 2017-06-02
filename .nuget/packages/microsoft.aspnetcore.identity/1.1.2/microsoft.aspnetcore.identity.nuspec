@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNetCore.Identity</id>
+    <version>1.1.2</version>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>ASP.NET Core Identity is the membership system for building ASP.NET Core web applications, including membership, login, and user data. ASP.NET Core Identity allows you to add login features to your application and makes it easy to customize data about the logged in user.</description>
+    <tags>aspnetcore,identity,membership</tags>
+    <serviceable>true</serviceable>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.1">
+        <dependency id="Microsoft.AspNetCore.Authentication.Cookies" version="[1.1.2, )" />
+        <dependency id="Microsoft.AspNetCore.Cryptography.KeyDerivation" version="[1.1.2, )" />
+        <dependency id="Microsoft.AspNetCore.Hosting.Abstractions" version="[1.1.2, )" />
+        <dependency id="NETStandard.Library" version="[1.6.1, )" />
+      </group>
+      <group targetFramework=".NETStandard1.3">
+        <dependency id="Microsoft.AspNetCore.Authentication.Cookies" version="[1.1.2, )" />
+        <dependency id="Microsoft.AspNetCore.Cryptography.KeyDerivation" version="[1.1.2, )" />
+        <dependency id="Microsoft.AspNetCore.Hosting.Abstractions" version="[1.1.2, )" />
+        <dependency id="NETStandard.Library" version="[1.6.1, )" />
+      </group>
+    </dependencies>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm</licenseUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</iconUrl>
+    <copyright>Copyright © Microsoft Corporation</copyright>
+    <projectUrl>http://www.asp.net/</projectUrl>
+  </metadata>
+</package>
