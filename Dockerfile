@@ -1,13 +1,8 @@
 from microsoft/dotnet:latest
-#from cmiles74/dotnet:latest
 
 # get add-apt-repository
 run apt-get update
 run apt-get -y --no-install-recommends install software-properties-common curl apt-transport-https
-
-# add SQL Server tools PPA
-# run curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-# run curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | tee /etc/apt/sources.list.d/msprod.list
 
 # add nodejs ppa
 run curl -sL https://deb.nodesource.com/setup_6.x | bash -
@@ -54,10 +49,9 @@ run dpkg -i vscode-amd64.deb
 run rm vscode-amd64.deb
 
 # install flat plat theme
-run wget 'https://github.com/nana-4/Flat-Plat/releases/download/3.20.20160404/Flat-Plat-3.20.20160404.tar.gz'
-run tar -xf Flat-Plat*
-run mv Flat-Plat /usr/share/themes
-run rm Flat-Plat*gz
+run curl -sL https://github.com/nana-4/Flat-Plat/archive/v20170515.tar.gz | tar xz
+run cd Flat-Plat-20170515 && ./install.sh
+run cd .. && rm -rf Flat-Plat*
 run mv /usr/share/themes/Default /usr/share/themes/Default.bak
 run ln -s /usr/share/themes/Flat-Plat /usr/share/themes/Default
 
@@ -110,7 +104,6 @@ expose 3001
 # install spacemacs
 user developer
 workdir /developer
-run git clone --recursive https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 # set environment variables
 env PATH /developer/.npm/bin:$PATH
