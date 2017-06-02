@@ -1,17 +1,17 @@
-from microsoft/dotnet:latest
+FROM microsoft/dotnet:latest
 
 # get add-apt-repository
-run apt-get update
-run apt-get -y --no-install-recommends install software-properties-common curl apt-transport-https
+RUN apt-get update
+RUN apt-get -y --no-install-recommends install software-properties-common curl apt-transport-https
 
 # add nodejs ppa
-run curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 
 # update apt cache
-run apt-get update
+RUN apt-get update
 
 # vscode dependencies
-run apt-get -y --no-install-recommends install libc6-dev libgtk2.0-0 libgtk-3-0 libpango-1.0-0 \
+RUN apt-get -y --no-install-recommends install libc6-dev libgtk2.0-0 libgtk-3-0 libpango-1.0-0 \
   libcairo2 libfontconfig1 libgconf2-4 libnss3 libasound2 libxtst6 unzip libglib2.0-bin libcanberra-gtk-module \
   libgl1-mesa-glx curl build-essential gettext libstdc++6 software-properties-common \
   wget git xterm automake libtool autogen nodejs libnotify-bin aspell aspell-en htop git \
@@ -41,82 +41,78 @@ run apt-get -y --no-install-recommends install libc6-dev libgtk2.0-0 libgtk-3-0 
   rm -rf /tmp/*
 
 # update npm
-run npm install npm -g
+RUN npm install npm -g
 
 # install vscode
-run wget -O vscode-amd64.deb  https://go.microsoft.com/fwlink/?LinkID=760868
-run dpkg -i vscode-amd64.deb
-run rm vscode-amd64.deb
+RUN wget -O vscode-amd64.deb  https://go.microsoft.com/fwlink/?LinkID=760868
+RUN dpkg -i vscode-amd64.deb
+RUN rm vscode-amd64.deb
 
 # install flat plat theme
-run curl -sL https://github.com/nana-4/Flat-Plat/archive/v20170515.tar.gz | tar xz
-run cd Flat-Plat-20170515 && ./install.sh
-run cd .. && rm -rf Flat-Plat*
-run mv /usr/share/themes/Default /usr/share/themes/Default.bak
-run ln -s /usr/share/themes/Flat-Plat /usr/share/themes/Default
+RUN curl -sL https://github.com/nana-4/Flat-Plat/archive/v20170515.tar.gz | tar xz
+RUN cd Flat-Plat-20170515 && ./install.sh
+RUN cd .. && rm -rf Flat-Plat*
+RUN mv /usr/share/themes/Default /usr/share/themes/Default.bak
+RUN ln -s /usr/share/themes/Flat-Plat /usr/share/themes/Default
 
 # install hack font
-run wget 'https://github.com/chrissimpkins/Hack/releases/download/v2.020/Hack-v2_020-ttf.zip'
-run unzip Hack*.zip
-run mkdir /usr/share/fonts/truetype/Hack
-run mv Hack* /usr/share/fonts/truetype/Hack
-run fc-cache -f -v
+RUN wget 'https://github.com/chrissimpkins/Hack/releases/download/v2.020/Hack-v2_020-ttf.zip'
+RUN unzip Hack*.zip
+RUN mkdir /usr/share/fonts/truetype/Hack
+RUN mv Hack* /usr/share/fonts/truetype/Hack
+RUN fc-cache -f -v
 
 # create our developer user
 workdir /root
-run groupadd -r developer -g 1000
-run useradd -u 1000 -r -g developer -d /developer -s /bin/bash -c "Software Developer" developer
-copy /developer /developer
-workdir /developer
+RUN groupadd -r developer -g 1000
+RUN useradd -u 1000 -r -g developer -d /developer -s /bin/bash -c "Software Developer" developer
+COPY /developer /developer
+WORKDIR /developer
 
 # default browser firefox
-run ln -s /developer/.local/share/firefox/firefox /bin/xdg-open
+RUN ln -s /developer/.local/share/firefox/firefox /bin/xdg-open
 
 # enable sudo for developer
-run echo "developer ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/developer
+RUN echo "developer ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/developer
 
 # fix developer permissions
-run chmod +x /developer/bin/*
-run chown -R developer:developer /developer
-user developer
+RUN chmod +x /developer/bin/*
+RUN chown -R developer:developer /developer
+USER developer
 
 # install firefox
-run mkdir Applications
+RUN mkdir Applications
 #run wget "https://download.mozilla.org/?product=firefox-aurora-latest-ssl&os=linux64&lang=en-US" -O firefox.tar.bz2
-run wget "https://ftp.mozilla.org/pub/firefox/nightly/latest-date/firefox-55.0a1.en-US.linux-x86_64.tar.bz2" -O firefox.tar.bz2
-run tar -xf firefox.tar.bz2
-run mv firefox .local/share
-run rm firefox.tar.bz2
+RUN wget "https://ftp.mozilla.org/pub/firefox/nightly/latest-date/firefox-55.0a1.en-US.linux-x86_64.tar.bz2" -O firefox.tar.bz2
+RUN tar -xf firefox.tar.bz2
+RUN mv firefox .local/share
+RUN rm firefox.tar.bz2
 
 # links for firefox
-run ln -s /developer/.local/share/firefox/firefox /developer/bin/x-www-browser
-run ln -s /developer/.local/share/firefox/firefox /developer/bin/gnome-www-browser
+RUN ln -s /developer/.local/share/firefox/firefox /developer/bin/x-www-browser
+RUN ln -s /developer/.local/share/firefox/firefox /developer/bin/gnome-www-browser
 
 # copy in test project
-copy project /developer/project
-workdir /developer/project
+COPY project /developer/project
+WORKDIR /developer/project
 
 # setup our ports
-expose 5000
-expose 3000
-expose 3001
-
-# install spacemacs
-user developer
-workdir /developer
+EXPOSE 5000
+EXPOSE 3000
+EXPOSE 3001
 
 # set environment variables
-env PATH /developer/.npm/bin:$PATH
-env NODE_PATH /developer/.npm/lib/node_modules:$NODE_PATH
-env BROWSER /developer/.local/share/firefox/firefox-bin
-env SHELL /bin/bash
+ENV PATH /developer/.npm/bin:$PATH
+ENV NODE_PATH /developer/.npm/lib/node_modules:$NODE_PATH
+ENV BROWSER /developer/.local/share/firefox/firefox-bin
+ENV SHELL /bin/bash
 
 # mount points
-volume ["/developer/.config/Code"]
-volume ["/developer/.vscode"]
-volume ["/developer/.ssh"]
-volume ["/developer/project"]
+VOLUME ["/developer/.config/Code"]
+VOLUME ["/developer/.vscode"]
+VOLUME ["/developer/.ssh"]
+VOLUME ["/developer/project"]
 
 # start vscode
-entrypoint ["/developer/bin/start-shell"]
+ENTRYPOINT ["/developer/bin/start-shell"]
 
