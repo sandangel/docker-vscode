@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:latest
+FROM microsoft/dotnet:2.0-sdk
 
 # get add-apt-repository
 RUN apt-get update
